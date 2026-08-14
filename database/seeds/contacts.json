@@ -1,0 +1,84 @@
+{
+  "contacts": [
+    {
+      "first_name": "María",
+      "last_name": "González",
+      "email": "maria.gonzalez@atlantis.mx",
+      "company": "Atlantis Labs",
+      "favorite": true,
+      "phones": [
+        { "type": "mobile", "number": "+52 55 1234 5678" },
+        { "type": "work", "number": "55 8899 1020" }
+      ]
+    },
+    {
+      "first_name": "Carlos",
+      "last_name": "Ramírez",
+      "email": "carlos.ramirez@correo.mx",
+      "company": null,
+      "favorite": false,
+      "phones": [{ "type": "mobile", "number": "5544332211" }]
+    },
+    {
+      "first_name": "Ana Sofía",
+      "last_name": "Beltrán",
+      "email": "ana.beltran@nimbo.mx",
+      "company": "Nimbo",
+      "favorite": true,
+      "phones": [
+        { "type": "mobile", "number": "+52 33 2211 4455" },
+        { "type": "home", "number": "33 1122 3344" },
+        { "type": "work", "number": "33 5566 7788" }
+      ]
+    },
+    {
+      "first_name": "Diego",
+      "last_name": "Hernández",
+      "email": "diego.hernandez@ferreteriadelcentro.mx",
+      "company": "Ferretería del Centro",
+      "favorite": false,
+      "phones": [{ "type": "work", "number": "81 4455 6677" }]
+    },
+    {
+      "first_name": "Valentina",
+      "last_name": "Ortiz",
+      "email": "valentina.ortiz@example.com",
+      "company": "Freelance",
+      "favorite": false,
+      "phones": [
+        { "type": "mobile", "number": "+52 55 7788 9900" },
+        { "type": "other", "number": "55 3030 4040" }
+      ]
+    },
+    {
+      "first_name": "Javier",
+      "last_name": "Mendoza",
+      "email": "j.mendoza@transportesmx.com",
+      "company": "Transportes MX",
+      "favorite": false,
+      "phones": [
+        { "type": "mobile", "number": "55 6677 8899" },
+        { "type": "work", "number": "55 1010 2020" }
+      ]
+    },
+    {
+      "first_name": "Regina",
+      "last_name": "Castillo",
+      "email": "regina.castillo@estudio.mx",
+      "company": "Estudio Castillo",
+      "favorite": true,
+      "phones": [{ "type": "mobile", "number": "+52 222 334 4556" }]
+    },
+    {
+      "first_name": "Tomás",
+      "last_name": "Aguilar",
+      "email": "tomas.aguilar@example.com",
+      "company": null,
+      "favorite": false,
+      "phones": [
+        { "type": "home", "number": "55 9988 7766" },
+        { "type": "mobile", "number": "55 4433 2211" }
+      ]
+    }
+  ]
+}

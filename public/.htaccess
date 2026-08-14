@@ -1,0 +1,7 @@
+# Reescribe todo hacia index.php (front controller) cuando se sirve con Apache.
+# No hace falta con el servidor embebido de PHP (`php -S ... public/index.php`),
+# que ya usa index.php como router script.
+RewriteEngine On
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [L]
