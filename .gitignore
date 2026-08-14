@@ -1,0 +1,28 @@
+# Dependencies
+/vendor/
+
+# Base de datos local (se genera con bin/migrate.php)
+/database/*.sqlite
+/database/*.sqlite-journal
+
+# Logs y storage en runtime
+/storage/logs/*.log
+/storage/database/*.sqlite
+
+# PHPUnit / coverage
+/.phpunit.cache
+/.phpunit.result.cache
+/coverage/
+
+# Entorno local
+.env
+.env.local
+
+# IDEs y editores
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.swp
+.DS_Store
+Thumbs.db
