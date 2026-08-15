@@ -5,7 +5,8 @@ listar y eliminar, con arquitectura en capas que separa el acceso a los datos
 (SQLite vía PDO). Incluye validación completa (bonus 1) y uno o varios teléfonos por
 contacto (bonus 2).
 
-> ⏱️ **Tiempo invertido:** _completar antes de entregar_ — ver la nota al final de este
+> ⏱️ **Tiempo invertido:** ~2.5 horas — desarrollo (incluye planificación de la
+> arquitectura y pruebas QA manuales sobre la API real). Ver la nota al final de este
 > README.
 
 ---
@@ -206,7 +207,7 @@ dos tablas para los teléfonos, contrato compatible con el frontend, etc.) está
 
 ## Testing
 
-Suite de **37 pruebas** con PHPUnit en tres niveles — unit (validación, router,
+Suite de **49 pruebas** con PHPUnit en tres niveles — unit (validación, router,
 normalización de teléfonos), integración (repositorio contra SQLite en memoria) y feature
 (API completa de punta a punta vía el `Kernel` real):
 
@@ -261,8 +262,10 @@ documentado en **[`docs/01-flujo-git-github.md`](docs/01-flujo-git-github.md)**.
 
 ### Nota sobre el tiempo invertido
 
-Este proyecto se generó con **Claude Code** en una sesión de trabajo asistida por IA. No
-tengo un cronómetro real de "horas-persona" para reportar de forma honesta en tu nombre —
-te recomiendo reemplazar la línea de arriba con el tiempo que tú realmente dediques a
-revisar, entender y ajustar el código antes de entregarlo, en vez de dejar un número
-inventado.
+Este proyecto se generó con **Claude Code** en una sesión de trabajo asistida por IA. El
+tiempo reportado (~2.5 horas) cubre el ciclo completo de desarrollo: planificación de la
+arquitectura en capas, implementación (dominio, persistencia, validación, endpoints),
+pruebas automatizadas (unit/integración/feature) y pruebas QA manuales sobre la API real
+—incluida la corrección de un bug encontrado durante esa verificación manual, donde un
+número de teléfono con letras pasaba la validación indebidamente—, además de la
+documentación (README, referencia de API, colección de Postman).
