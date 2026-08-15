@@ -104,6 +104,23 @@ final class ContactValidatorTest extends TestCase
         }
     }
 
+    /**
+     * Regresión: un número con letras (`"+52 dsadsadsa55 1234 5678"`) se
+     * normalizaba a 10 dígitos válidos y el contacto se creaba igual.
+     */
+    public function test_rechaza_un_telefono_con_letras_aunque_al_normalizarlo_de_10_digitos(): void
+    {
+        try {
+            $this->validator->validate([
+                'first_name' => 'Ada', 'last_name' => 'Lovelace', 'email' => 'ada@example.com',
+                'phones' => [['type' => 'mobile', 'number' => '+52 dsadsadsa55 1234 5678']],
+            ]);
+            $this->fail('Se esperaba una ValidationException.');
+        } catch (ValidationException $exception) {
+            $this->assertArrayHasKey('phones.0.number', $exception->errors());
+        }
+    }
+
     public function test_rechaza_un_tipo_de_telefono_desconocido(): void
     {
         try {

@@ -35,4 +35,49 @@ final class PhoneNumberTest extends TestCase
         $this->assertSame('', PhoneNumber::normalize(''));
         $this->assertSame('', PhoneNumber::normalize('   '));
     }
+
+    /**
+     * @dataProvider formatosValidos
+     */
+    public function test_acepta_los_separadores_habituales_de_formato(string $raw): void
+    {
+        $this->assertTrue(PhoneNumber::isWellFormed($raw));
+    }
+
+    /** @return array<string, array{string}> */
+    public static function formatosValidos(): array
+    {
+        return [
+            'lada con +' => ['+52 55 1234 5678'],
+            'guiones' => ['55-1234-5678'],
+            'paréntesis' => ['(55) 1234 5678'],
+            'puntos' => ['55.1234.5678'],
+            'solo dígitos' => ['5512345678'],
+            'con espacios alrededor' => ['  5512345678  '],
+        ];
+    }
+
+    /**
+     * Regresión: `normalize()` descarta todo lo que no sea dígito, así que sin
+     * `isWellFormed()` un número con letras se convertía en uno de 10 dígitos
+     * válido y se guardaba como tal.
+     *
+     * @dataProvider formatosInvalidos
+     */
+    public function test_rechaza_texto_que_no_es_un_telefono(string $raw): void
+    {
+        $this->assertFalse(PhoneNumber::isWellFormed($raw));
+    }
+
+    /** @return array<string, array{string}> */
+    public static function formatosInvalidos(): array
+    {
+        return [
+            'letras en medio' => ['+52 dsadsadsa55 1234 5678'],
+            'letras al inicio' => ['abc5512345678'],
+            'texto alrededor' => ['hola mundo 5512345678 xyz'],
+            'signo + fuera del inicio' => ['55+1234567890'],
+            'símbolos' => ['5512345678;DROP'],
+        ];
+    }
 }

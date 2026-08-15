@@ -18,6 +18,25 @@ final class PhoneNumber
     private const MX_COUNTRY_CODE = '52';
     public const DIGITS = 10;
 
+    /**
+     * Caracteres admitidos al capturar un teléfono: dígitos y los separadores
+     * habituales de formato, con un `+` opcional al inicio para la lada.
+     */
+    private const FORMAT_PATTERN = '/^\+?[0-9\s\-().]+$/';
+
+    /**
+     * Si el texto solo contiene caracteres propios de un teléfono.
+     *
+     * Hay que preguntarlo **antes** de normalizar: `normalize()` descarta todo
+     * lo que no sea dígito, así que no distingue un separador legítimo de basura
+     * — sin esta comprobación, `"+52 abc55 1234 5678"` se convertiría en un
+     * número de 10 dígitos perfectamente válido y se guardaría como tal.
+     */
+    public static function isWellFormed(string $raw): bool
+    {
+        return preg_match(self::FORMAT_PATTERN, trim($raw)) === 1;
+    }
+
     /** `+52 55 1234 5678` → `5512345678`. Deja solo dígitos y quita la lada MX si aplica. */
     public static function normalize(string $raw): string
     {
