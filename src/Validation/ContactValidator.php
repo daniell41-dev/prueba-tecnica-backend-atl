@@ -204,6 +204,17 @@ final class ContactValidator
             return null;
         }
 
+        // Antes de normalizar: si se dejara pasar cualquier carácter, `normalize()`
+        // borraría las letras junto con los separadores y un número con basura
+        // acabaría guardándose como si fuera válido.
+        if (!PhoneNumber::isWellFormed($value)) {
+            $validator->addError(
+                $field,
+                'Solo se permiten dígitos, espacios, guiones, puntos, paréntesis y un "+" inicial.',
+            );
+            return null;
+        }
+
         $normalized = PhoneNumber::normalize($value);
 
         if (strlen($normalized) !== PhoneNumber::DIGITS) {
